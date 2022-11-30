@@ -15,7 +15,7 @@ namespace Chessington.GameEngine.Pieces
 
             for (var i = 0; i < 8; i++)
             {
-                var bishopMoves = new List<Square> {
+                var queenMoves = new List<Square> {
                     Square.At(queenLocation.Row, i),
                     Square.At(i, queenLocation.Col),
                     Square.At(queenLocation.Row + i, queenLocation.Col + i),
@@ -24,7 +24,7 @@ namespace Chessington.GameEngine.Pieces
                     Square.At(queenLocation.Row - i, queenLocation.Col - i)
                 };
 
-                foreach (var move in bishopMoves)
+                foreach (var move in queenMoves)
                 {
                     if (move.isSquareOnBoard() == true)
                     {
@@ -32,7 +32,7 @@ namespace Chessington.GameEngine.Pieces
                     }
                 }
             }
-
+            
             queenMovesList.RemoveAll(item => item == queenLocation);
 
             return queenMovesList;
