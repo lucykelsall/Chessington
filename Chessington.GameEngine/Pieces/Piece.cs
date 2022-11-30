@@ -12,6 +12,9 @@ namespace Chessington.GameEngine.Pieces
         }
 
         public Player Player { get; private set; }
+        public bool FirstTurn { get => firstTurn; set => firstTurn = value; }
+
+        private bool firstTurn = true;
 
         public abstract IEnumerable<Square> GetAvailableMoves(Board board);
 

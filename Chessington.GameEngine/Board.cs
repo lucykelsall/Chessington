@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Chessington.GameEngine.Pieces;
 
 namespace Chessington.GameEngine
@@ -44,6 +45,12 @@ namespace Chessington.GameEngine
         public void MovePiece(Square from, Square to)
         {
             var movingPiece = board[from.Row, from.Col];
+
+            if (movingPiece is Pawn)
+            {
+                movingPiece.FirstTurn = false;
+            }
+
             if (movingPiece == null) { return; }
 
             if (movingPiece.Player != CurrentPlayer)
