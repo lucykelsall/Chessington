@@ -20,20 +20,26 @@ namespace Chessington.GameEngine.Pieces
             if (this.Player == Player.White)
             {
                 var moveOneSquare = Square.At(pawnLocation.Row - 1, pawnLocation.Col);
-                pawnMovesList.Add(moveOneSquare); 
-                if (this.FirstTurn == true)
+                if (board.GetPiece(moveOneSquare) == null)
                 {
-                    var moveTwoSquares = Square.At(pawnLocation.Row - 2, pawnLocation.Col);
+                    pawnMovesList.Add(moveOneSquare);
+                }
+                var moveTwoSquares = Square.At(pawnLocation.Row - 2, pawnLocation.Col);
+                if (this.FirstTurn == true && board.GetPiece(moveOneSquare) == null && board.GetPiece(moveTwoSquares) == null)
+                {
                     pawnMovesList.Add(moveTwoSquares);
                 }
             }
             else
             {
                 var moveOneSquare = Square.At(pawnLocation.Row + 1, pawnLocation.Col);
-                pawnMovesList.Add(moveOneSquare);
-                if (this.FirstTurn == true)
+                if (board.GetPiece(moveOneSquare) == null)
                 {
-                    var moveTwoSquares = Square.At(pawnLocation.Row + 2, pawnLocation.Col);
+                    pawnMovesList.Add(moveOneSquare);
+                }
+                var moveTwoSquares = Square.At(pawnLocation.Row + 2, pawnLocation.Col);
+                if (this.FirstTurn == true && board.GetPiece(moveOneSquare) == null && board.GetPiece(moveTwoSquares) == null)
+                {
                     pawnMovesList.Add(moveTwoSquares);
                 }
             }
