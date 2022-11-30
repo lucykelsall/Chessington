@@ -32,8 +32,6 @@ namespace Chessington.GameEngine.Pieces
                 }
             }
 
-            knightMovesList.RemoveAll(item => item == knightLocation);
-
             return knightMovesList;
         }
     }
