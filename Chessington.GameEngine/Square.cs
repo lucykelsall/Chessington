@@ -1,4 +1,6 @@
-﻿namespace Chessington.GameEngine
+﻿using System.Runtime.InteropServices;
+
+namespace Chessington.GameEngine
 {
     public struct Square
     {
@@ -48,6 +50,13 @@
         public override string ToString()
         {
             return string.Format("Row {0}, Col {1}", Row, Col);
+        }
+
+        public bool isSquareOnBoard()
+        {
+            var isSquareOnBoard = this.Row > -1 && this.Row < 8 && this.Col > -1 && this.Col < 8;
+
+            return isSquareOnBoard;
         }
     }
 }
