@@ -2,6 +2,8 @@
 using Chessington.GameEngine;
 using System.Collections.Generic;
 using System.Linq;
+using System.Collections;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace Chessington.GameEngine.Pieces
 {
@@ -15,13 +17,80 @@ namespace Chessington.GameEngine.Pieces
             var rookMovesList = new List<Square>();
             var rookLocation = board.FindPiece(this);
 
-            for (var i = 0; i < 8; i++)
+            for (var i = rookLocation.Col + 1; i < 8; i++)
             {
-                rookMovesList.Add(Square.At(rookLocation.Row, i));
-                rookMovesList.Add(Square.At(i, rookLocation.Col));
+                var squareToMoveTo = Square.At(rookLocation.Row, i);
+
+                if (board.GetPiece(squareToMoveTo) == null && squareToMoveTo.isSquareOnBoard() == true)
+                {
+                    rookMovesList.Add(squareToMoveTo);
+                }
+                else if (board.GetPiece(squareToMoveTo).Player != this.Player && squareToMoveTo.isSquareOnBoard() == true)
+                {
+                    rookMovesList.Add(squareToMoveTo);
+                    break;
+                }
+                else if (board.GetPiece(squareToMoveTo).Player == this.Player && squareToMoveTo.isSquareOnBoard() == true)
+                {
+                    break;
+                }
             }
 
-            rookMovesList.RemoveAll(item => item == rookLocation);
+            for (var i = rookLocation.Col - 1; i > -1; i--)
+            {
+                var squareToMoveTo = Square.At(rookLocation.Row, i);
+
+                if (board.GetPiece(squareToMoveTo) == null && squareToMoveTo.isSquareOnBoard() == true)
+                {
+                    rookMovesList.Add(squareToMoveTo);
+                }
+                else if (board.GetPiece(squareToMoveTo).Player != this.Player && squareToMoveTo.isSquareOnBoard() == true)
+                {
+                    rookMovesList.Add(squareToMoveTo);
+                    break;
+                }
+                else if (board.GetPiece(squareToMoveTo).Player == this.Player && squareToMoveTo.isSquareOnBoard() == true)
+                {
+                    break;
+                }
+            }
+            for (var i = rookLocation.Row + 1; i < 8; i++)
+            {
+                var squareToMoveTo = Square.At(i, rookLocation.Col);
+
+                if (board.GetPiece(squareToMoveTo) == null && squareToMoveTo.isSquareOnBoard() == true)
+                {
+                    rookMovesList.Add(squareToMoveTo);
+                }
+                else if (board.GetPiece(squareToMoveTo).Player != this.Player && squareToMoveTo.isSquareOnBoard() == true)
+                {
+                    rookMovesList.Add(squareToMoveTo);
+                    break;
+                }
+                else if (board.GetPiece(squareToMoveTo).Player == this.Player && squareToMoveTo.isSquareOnBoard() == true)
+                {
+                    break;
+                }
+            }
+
+            for (var i = rookLocation.Row - 1; i > -1; i--)
+            {
+                var squareToMoveTo = Square.At(i, rookLocation.Col);
+
+                if (board.GetPiece(squareToMoveTo) == null && squareToMoveTo.isSquareOnBoard() == true)
+                {
+                    rookMovesList.Add(squareToMoveTo);
+                }
+                else if (board.GetPiece(squareToMoveTo).Player != this.Player && squareToMoveTo.isSquareOnBoard() == true)
+                {
+                    rookMovesList.Add(squareToMoveTo);
+                    break;
+                }
+                else if (board.GetPiece(squareToMoveTo).Player == this.Player && squareToMoveTo.isSquareOnBoard() == true)
+                {
+                    break;
+                }
+            }
 
             return rookMovesList;
         }
