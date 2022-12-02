@@ -26,7 +26,8 @@ namespace Chessington.GameEngine.Pieces
 
             foreach (var move in kingMoves)
             {
-                if (move.isSquareOnBoard() == true)
+                if (move.isSquareOnBoard() == true && 
+                    (board.GetPiece(move) == null || board.GetPiece(move).Player != Player))
                 {
                     kingMovesList.Add(move);
                 }
