@@ -17,7 +17,7 @@ namespace Chessington.GameEngine.Pieces
             var pawnMovesList = new List<Square>();
             var pawnLocation = board.FindPiece(this);
             
-            if (this.Player == Player.White)
+            if (Player == Player.White)
             {
                 var moveOneSquare = Square.At(pawnLocation.Row - 1, pawnLocation.Col);
                 if (moveOneSquare.isSquareOnBoard() && board.GetPiece(moveOneSquare) == null)
@@ -25,10 +25,23 @@ namespace Chessington.GameEngine.Pieces
                     pawnMovesList.Add(moveOneSquare);
 
                     var moveTwoSquares = Square.At(pawnLocation.Row - 2, pawnLocation.Col);
-                    if (moveTwoSquares.isSquareOnBoard() && this.FirstTurn == true &&
+                    if (moveTwoSquares.isSquareOnBoard() && FirstTurn &&
                         board.GetPiece(moveTwoSquares) == null)
                     {
                         pawnMovesList.Add(moveTwoSquares);
+                    }
+                }
+
+                var diagonalMoves = new List<Square>
+                {
+                    Square.At(pawnLocation.Row - 1, pawnLocation.Col - 1), 
+                    Square.At(pawnLocation.Row - 1, pawnLocation.Col + 1)
+                };
+                foreach (var move in diagonalMoves)
+                {
+                    if (move.isSquareOnBoard() && board.GetPiece(move) != null && board.GetPiece(move).Player == Player.Black)
+                    {
+                        pawnMovesList.Add(move);
                     }
                 }
             }
@@ -40,10 +53,23 @@ namespace Chessington.GameEngine.Pieces
                     pawnMovesList.Add(moveOneSquare);
 
                     var moveTwoSquares = Square.At(pawnLocation.Row + 2, pawnLocation.Col);
-                    if (moveTwoSquares.isSquareOnBoard() && this.FirstTurn == true &&
+                    if (moveTwoSquares.isSquareOnBoard() && FirstTurn &&
                         board.GetPiece(moveTwoSquares) == null)
                     {
                         pawnMovesList.Add(moveTwoSquares);
+                    }
+                }
+                
+                var diagonalMoves = new List<Square>
+                {
+                    Square.At(pawnLocation.Row + 1, pawnLocation.Col - 1), 
+                    Square.At(pawnLocation.Row + 1, pawnLocation.Col + 1)
+                };
+                foreach (var move in diagonalMoves)
+                {
+                    if (move.isSquareOnBoard() && board.GetPiece(move) != null && board.GetPiece(move).Player == Player.White)
+                    {
+                        pawnMovesList.Add(move);
                     }
                 }
             }
