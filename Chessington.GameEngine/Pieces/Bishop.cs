@@ -21,18 +21,16 @@ namespace Chessington.GameEngine.Pieces
 
                 if (squareToMoveTo.isSquareOnBoard() == true)
                 {
-                    if (board.GetPiece(squareToMoveTo) == null && squareToMoveTo.isSquareOnBoard() == true)
+                    if (board.GetPiece(squareToMoveTo) == null)
                     {
                         bishopMovesList.Add(squareToMoveTo);
                     }
-                    else if (board.GetPiece(squareToMoveTo).Player != this.Player &&
-                             squareToMoveTo.isSquareOnBoard() == true)
+                    else if (board.GetPiece(squareToMoveTo).Player != this.Player)
                     {
                         bishopMovesList.Add(squareToMoveTo);
                         break;
                     }
-                    else if (board.GetPiece(squareToMoveTo).Player == this.Player &&
-                             squareToMoveTo.isSquareOnBoard() == true)
+                    else if (board.GetPiece(squareToMoveTo).Player == this.Player)
                     {
                         break;
                     }
@@ -42,18 +40,16 @@ namespace Chessington.GameEngine.Pieces
 
                 if (otherSquareToMoveTo.isSquareOnBoard() == true)
                 {
-                    if (board.GetPiece(otherSquareToMoveTo) == null && otherSquareToMoveTo.isSquareOnBoard() == true)
+                    if (board.GetPiece(otherSquareToMoveTo) == null)
                     {
                         bishopMovesList.Add(otherSquareToMoveTo);
                     }
-                    else if (board.GetPiece(otherSquareToMoveTo).Player != this.Player &&
-                             otherSquareToMoveTo.isSquareOnBoard() == true)
+                    else if (board.GetPiece(otherSquareToMoveTo).Player != this.Player)
                     {
                         bishopMovesList.Add(otherSquareToMoveTo);
                         break;
                     }
-                    else if (board.GetPiece(otherSquareToMoveTo).Player == this.Player &&
-                             otherSquareToMoveTo.isSquareOnBoard() == true)
+                    else if (board.GetPiece(otherSquareToMoveTo).Player == this.Player)
                     {
                         break;
                     }
@@ -63,18 +59,16 @@ namespace Chessington.GameEngine.Pieces
 
                 if (xSquareToMoveTo.isSquareOnBoard() == true)
                 {
-                    if (board.GetPiece(xSquareToMoveTo) == null && xSquareToMoveTo.isSquareOnBoard() == true)
+                    if (board.GetPiece(xSquareToMoveTo) == null)
                     {
                         bishopMovesList.Add(xSquareToMoveTo);
                     }
-                    else if (board.GetPiece(xSquareToMoveTo).Player != this.Player &&
-                             xSquareToMoveTo.isSquareOnBoard() == true)
+                    else if (board.GetPiece(xSquareToMoveTo).Player != this.Player)
                     {
                         bishopMovesList.Add(xSquareToMoveTo);
                         break;
                     }
-                    else if (board.GetPiece(xSquareToMoveTo).Player == this.Player &&
-                             xSquareToMoveTo.isSquareOnBoard() == true)
+                    else if (board.GetPiece(xSquareToMoveTo).Player == this.Player)
                     {
                         break;
                     }
@@ -84,18 +78,16 @@ namespace Chessington.GameEngine.Pieces
 
                 if (ySquareToMoveTo.isSquareOnBoard() == true)
                 {
-                    if (board.GetPiece(ySquareToMoveTo) == null && ySquareToMoveTo.isSquareOnBoard() == true)
+                    if (board.GetPiece(ySquareToMoveTo) == null)
                     {
                         bishopMovesList.Add(ySquareToMoveTo);
                     }
-                    else if (board.GetPiece(ySquareToMoveTo).Player != this.Player &&
-                             ySquareToMoveTo.isSquareOnBoard() == true)
+                    else if (board.GetPiece(ySquareToMoveTo).Player != this.Player)
                     {
                         bishopMovesList.Add(ySquareToMoveTo);
                         break;
                     }
-                    else if (board.GetPiece(ySquareToMoveTo).Player == this.Player &&
-                             ySquareToMoveTo.isSquareOnBoard() == true)
+                    else if (board.GetPiece(ySquareToMoveTo).Player == this.Player)
                     {
                         break;
                     }
