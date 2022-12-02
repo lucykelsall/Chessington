@@ -12,6 +12,7 @@ namespace Chessington.GameEngine.Pieces
         {
             var knightMovesList = new List<Square>();
             var knightLocation = board.FindPiece(this);
+            var knightPlayer = Player;
 
             var knightMoves = new List<Square> {
                 Square.At(knightLocation.Row + 1, knightLocation.Col + 2),
@@ -26,7 +27,7 @@ namespace Chessington.GameEngine.Pieces
 
             foreach (var move in knightMoves)
             {
-                if (move.isSquareOnBoard() == true)
+                if (move.isSquareOnBoard() == true && (board.GetPiece(move) == null || board.GetPiece(move).Player != Player))
                 {
                     knightMovesList.Add(move);
                 }
